@@ -24,11 +24,11 @@ const postsReducer = (state: InitialValueType = initialValue, action: ActionType
 }
 
 export const postsActions = {
-    setPostsSuccess: (posts: Array<PostsType>) => ({ type: actionsTypes.SET_POSTS_SUCCESS, posts } as const)
+    setPostsSuccess: (posts: Array<PostsType>) => ({ type: actionsTypes.SET_POSTS_SUCCESS, posts })
 }
 
 export const getPosts = (): ThunkType => async dispatch => {
-    const posts = await DAL.posts.getPosts()
+    const posts: Array<PostsType> = await DAL.posts.getPosts()
     if(posts.length){
         dispatch(postsActions.setPostsSuccess(posts))
     }

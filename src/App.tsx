@@ -5,16 +5,6 @@ import Footer from './Components/Footer/Footer'
 import Main from './Pages/Main/Main'
 
 const App = () => {
-  // const getPosts = async () => {
-  //   const posts = await fetch('http://localhost:8888/api/posts')
-  //   const postsEls = await posts.json()
-  //   console.log(postsEls)
-  // }
-
-  // useEffect(() => {
-  //   getPosts()
-  // }, [])
-
   return (
     <div>
       <Header/>

@@ -1,19 +1,14 @@
 import { ActionTypes } from './reduxStore'
+import { ThunkAction } from 'redux-thunk'
+import { AnyAction, Store } from 'redux'
+import DAL from '../API/api'
 
 const actionsTypes = {
     SET_POSTS_SUCCESS: 'SET_POSTS_SUCCESS'
 }
 
 const initialValue = {
-    posts: [
-        {
-            author: "Valentines",
-            content: "Some very-very interests content",
-            title: "Loves",
-            __v: 0,
-            _id: "60a6a1bbf2046f"
-        }
-    ] as Array<PostsType>
+    posts: [] as Array<PostsType>
 }
 
 const postsReducer = (state: InitialValueType = initialValue, action: ActionType) => {
@@ -32,12 +27,21 @@ export const postsActions = {
     setPostsSuccess: (posts: Array<PostsType>) => ({ type: actionsTypes.SET_POSTS_SUCCESS, posts } as const)
 }
 
+export const getPosts = (): ThunkType => async dispatch => {
+    const posts = await DAL.posts.getPosts()
+    if(posts.length){
+        dispatch(postsActions.setPostsSuccess(posts))
+    }
+}
+
 export default postsReducer
 
 type InitialValueType = typeof initialValue
 type ActionType = ActionTypes<typeof postsActions>
 
-type PostsType = {
+type ThunkType = ThunkAction<void, Store, unknown, AnyAction>
+
+export type PostsType = {
     __v: number
     _id: string
     title: string

@@ -1,14 +1,14 @@
 import axios from 'axios'
+import { PostsType } from '../Redux/postsReducer'
 
 const instance = axios.create({
-    baseURL: 'https://http://localhost:8888/api/',
-    withCredentials: true,
+    baseURL: 'http://localhost:8888/api/',
 })
 
 const DAL = {
     posts: {
         getPosts(){
-            return instance.get('posts')
+            return instance.get<Array<PostsType>>('posts').then(posts => posts.data)
         }
     }
 }

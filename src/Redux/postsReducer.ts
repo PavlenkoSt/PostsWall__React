@@ -47,4 +47,5 @@ export type PostsType = {
     title: string
     content: string
     author: string
+    picture?: string
 }

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Route, withRouter } from 'react-router-dom'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'

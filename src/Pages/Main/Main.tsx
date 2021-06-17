@@ -13,7 +13,17 @@ const Main = () => {
         dispatch(getPosts())
     }, [])
 
-    const renderPosts = posts.map(post => <PostForMainList/>)
+    const renderPosts = posts.map(post => <PostForMainList 
+        key={post._id}
+        id={post._id}
+        author={post.author}
+        content={post.content}
+        title={post.title}
+        picture={post.picture}
+    />)
+
+    console.log(posts);
+    
 
     return (
         <div className='container'>

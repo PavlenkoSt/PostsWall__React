@@ -10,17 +10,16 @@ type PostForMainListPropsType = {
     picture?: string
 }
 
-const PostForMainList: FC<PostForMainListPropsType> = ({ id, author, content, title }) => {
-
-
+const PostForMainList: FC<PostForMainListPropsType> = ({ id, author, content, title, picture }) => {
     return (
-        <NavLink to='/' className={s.post}>
-            {/* Сделать запрос за картинкой и отобразить ее здесь */}
+        <NavLink to={`/Post/${id}`} className={s.post}>
+            {/* Сделать запрос за картинкой и отобразить ее здесь {picture} */}
             <div className={s.imgCont}>
                 <img src="https://place-hold.it/600x300/666/fff.png/000" alt="post image" />
             </div>
             <div className={s.title}>{title}</div>
             <div className={s.author}>Author: {author}</div>
+            {/* Сделать контент на 2 строки и твроеточие */}
             <div className={s.content}>{content}</div>
         </NavLink>
     )

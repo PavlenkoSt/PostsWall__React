@@ -1,21 +1,27 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import DAL from '../../API/api'
 
 const Post = () => {
     const history = useHistory()
     const path = history.location.pathname.match(/\/Post\/(.+)/)
 
-    useEffect(() => {
+    const getPost = async () => {
         if(path?.length){
             const id = path[1]
-            // get post data here
+            const data = await DAL.posts.getPost(id)
+            console.log(data)
         }
+    }
+
+    useEffect(() => {
+        getPost()
     }, [])
 
     return (
         <div>
-
+            post
         </div>
     )
 }

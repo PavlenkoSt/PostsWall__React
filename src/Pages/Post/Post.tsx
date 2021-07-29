@@ -24,6 +24,15 @@ const Post = () => {
             { targetPost ? <>
                 <h2 className={s.h}>{ targetPost?.title }</h2>
                 <div className={s.author}> Author: <span>{ targetPost?.author || 'unknown' }</span></div>
+                <img 
+                    src={
+                        targetPost?.picture 
+                        ? `http://localhost:8888/${targetPost?.picture}` 
+                        : 'https://place-hold.it/600x300/666/fff.png/000'
+                    } 
+                    className={s.pic}
+                    alt="Post image" 
+                />
                 <p className={s.content}>{ targetPost?.content }</p>
             </> : <>
                 Ошибка, пост по данному адресу не найден!

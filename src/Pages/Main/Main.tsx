@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getPosts } from '../../Redux/postsReducer'
+import { getPosts, PostType } from '../../Redux/postsReducer'
 import { postsSelector } from '../../Redux/selectors/postsSelectors'
 import PostForMainList from '../../Components/PostForMainList/PostForMainList'
 import s from './Main.module.scss'
@@ -13,7 +13,7 @@ const Main = () => {
         dispatch(getPosts())
     }, [])
 
-    const renderPosts = posts.map(post => <PostForMainList 
+    const renderPosts = posts.map((post: PostType) => <PostForMainList 
         key={post._id}
         id={post._id}
         author={post.author}
@@ -21,9 +21,6 @@ const Main = () => {
         title={post.title}
         picture={post.picture}
     />)
-
-    console.log(posts);
-    
 
     return (
         <div className='container'>

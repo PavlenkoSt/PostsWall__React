@@ -2,9 +2,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import DAL from '../../API/api'
 import { getPost } from '../../Redux/postsReducer'
 import { targetPostSelector } from '../../Redux/selectors/postsSelectors'
+import s from './Post.module.scss'
 
 const Post = () => {
     const history = useHistory()
@@ -20,10 +20,11 @@ const Post = () => {
     }, [])
 
     return (
-        <div>
+        <div className={s.page}>
             { targetPost ? <>
-                <h2>{ targetPost?.title }</h2>
-                <p>{ targetPost?.content }</p>
+                <h2 className={s.h}>{ targetPost?.title }</h2>
+                <div className={s.author}> Author: <span>{ targetPost?.author || 'unknown' }</span></div>
+                <p className={s.content}>{ targetPost?.content }</p>
             </> : <>
                 Ошибка, пост по данному адресу не найден!
             </>}

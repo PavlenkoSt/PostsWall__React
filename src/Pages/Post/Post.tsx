@@ -20,13 +20,14 @@ const Post = () => {
     }, [])
 
     return (
-        <>
-            { targetPost ? <div>
-                1
-            </div> : <div>
+        <div>
+            { targetPost ? <>
+                <h2>{ targetPost?.title }</h2>
+                <p>{ targetPost?.content }</p>
+            </> : <>
                 Ошибка, пост по данному адресу не найден!
-            </div>}
-        </>
+            </>}
+        </div>
     )
 }
 
